@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Add Prospect</h1>
+    <fieldset>
+      <legend>Prospect Info</legend>
+      <form action="/addProspect" method="post">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" required />
+        <br /> <br>
+        <label for="position">Position</label>
+        <input type="text" name="position" id="position" required />
+        <br /> <br>
+        <label for="school">School</label>
+        <input type="text" name="school" id="school" required />
+        <br> <br>
+        <label for="procomp">Pro Comp</label>
+        <input type="text" name="procomp" id="procomp" />
+        <br> <br>
+        <button type="submit">Submit</button>
+      </form>
+    </fieldset>
+
+    <script>
+        onsubmit = () => {
+            const pos = document.querySelector('#position').value.toUpperCase()
+            const positions = ['QB', 'RB', 'WR', 'TE', 'FB', 'OT', 'G', 'C', 'OL', 'DT', 'DE', 'LB', 'CB', 'S', 'K', 'P', 'LS']
+            if (!positions.includes(pos)) {
+                alert(`Invalid position: ${pos}`)
+                return false
+            }
+            let name = document.querySelector('#name').value
+            let school = document.querySelector('#school').value
+            let procomp = document.querySelector('#procomp').value
+            return confirm(`Confirm add Prospect
+                name:  ${name}
+                school: ${school}
+                ${procomp ? 'Pro Comp: ' + procomp : ''}
+            `)
+        }
+    </script>
+  </body>
+</html>
